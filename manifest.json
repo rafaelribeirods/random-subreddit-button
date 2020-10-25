@@ -11,6 +11,5 @@
         "matches": ["*://*.reddit.com/*"],
         "js": ["scripts/rsb.js"]
     }],
-    "web_accessible_resources": ["images/*.png"],
     "manifest_version": 2
   }

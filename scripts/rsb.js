@@ -1,55 +1,58 @@
 window.onload=function() { 
 
-    let bar = document.getElementById('change-username-tooltip-id');
-
-    if(bar.children.length > 0) {
-        authenticated(bar);
+    let container = getContainer();
+    let button = null;
+    if(container.children.length > 0) {
+        button = createButtonAuthenticated(container);
     }
     else {
-        bar = document.getElementsByClassName('header-user-dropdown')[0];
-        notAuthenticated(bar);
+        button = createButtonUnauthenticated(container);
     }
-    
+    container.append(button);
 
 }
 
-function authenticated(bar) {
+function getContainer() {
+    return document.getElementById('change-username-tooltip-id');
+}
 
-    const button_example = bar.children[0];
-    const image_size = button_example.children[0].children[0].clientHeight;
-    
+function createButtonAuthenticated(container) {
+    let button_example = container.firstChild;
+    let size = getComputedStyle(button_example.firstChild).height;
     let button = button_example.cloneNode(true);
-    button.children[0].setAttribute('href', "https://reddit.com/r/random");
-    button.children[0].innerHTML = '';
-
-    let img = document.createElement('img');
-    img.src = chrome.runtime.getURL("images/icon.png");
-    img.style.height = image_size + 'px';
-    img.style.width = image_size + 'px';
-
-    button.children[0].appendChild(img);
-    bar.appendChild(button);
-
+    button.firstChild.href = 'https://www.reddit.com/r/random';
+    button.firstChild.removeChild(button.firstChild.firstChild);
+    let icon = createIcon(size);
+    button.firstChild.style['height'] = size;
+    button.firstChild.append(icon);
+    return button;
 }
 
-function notAuthenticated(bar) {
-
-    const button_example = bar.children[0];
-    const image_size = button_example.children[0].children[0].children[0].clientHeight;
-    const margin = window.getComputedStyle(button_example).getPropertyValue("margin-left");
-
-    let img = document.createElement('img');
-    img.src = chrome.runtime.getURL("images/icon.png");
-    img.style.height = image_size + 'px';
-    img.style.width = image_size + 'px';
-
-    let container = document.createElement('div');
-    container.style.marginLeft = margin;
+function createButtonUnauthenticated(container) {
+    let button = container.parentElement.lastChild.firstChild.cloneNode(true);
+    let size = getComputedStyle(container.parentElement.lastChild.firstChild).height;
+    button.removeAttribute('aria-expanded');
+    button.removeAttribute('aria-haspopup');
+    button.removeAttribute('id');
+    button.removeChild(button.lastChild);
+    button.style['width'] = size;
+    button.style['height'] = size;
+    button.style['display'] = 'flex';
+    button.style['justify-content'] = 'center';
+    button.firstChild.removeChild(button.firstChild.lastChild);
+    button.firstChild.firstChild.removeChild(button.firstChild.firstChild.firstChild);
+    button.firstChild.firstChild.append(createIcon(parseInt(size.replace('px', ''))/2 + 'px'));
     let link = document.createElement('a');
-    link.setAttribute('href', "https://reddit.com/r/random");
-    link.appendChild(img);
-    container.appendChild(link);
+    link.href = 'https://www.reddit.com/r/random';
+    link.append(button);
+    return link;
+}
 
-    document.getElementById('email-verification-tooltip-id').prepend(container);
-    
+function createIcon(size) {
+    let icon = document.createElement("i");
+    icon.classList.add('icon');
+    icon.classList.add('icon-crosspost');
+    icon.style['color'] = '#FF4500';
+    icon.style['height'] = size;
+    return icon;
 }
