@@ -5,11 +5,12 @@
     "icons": { 
         "16": "icon16.png",
         "48": "icon48.png",
+        "96": "icon96.png",
         "128": "icon128.png" 
     },
     "content_scripts": [{
         "matches": ["*://*.reddit.com/*"],
-        "js": ["scripts/rsb.js"]
+        "js": ["rsb.js"]
     }],
     "manifest_version": 2
   }
