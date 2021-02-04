@@ -1,4 +1,4 @@
-# random-subreddit-button
+# Random Subreddit Button
 A broswer extension that adds a button to Reddit's pages to visit random subreddits
 
 [Download for Google Chrome](https://chrome.google.com/webstore/detail/random-subreddit-button/dkkjibeimicbjblhahalkfhdjlakfamj?hl=pt-BR)
