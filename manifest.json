@@ -10,7 +10,8 @@
     },
     "content_scripts": [{
         "matches": ["*://*.reddit.com/*"],
-        "js": ["rsb.js"]
+        "js": ["rsb.js"],
+        "css": ["bubbler.css"]
     }],
-    "manifest_version": 2
+    "manifest_version": 3
   }

@@ -1,0 +1,33 @@
+
+.bubbler-wrapper {
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	margin: 0 3.5em 3.5em 0;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.bubbler-wrapper div {
+	width: 1.7em;
+    height: 1.7em;
+	font-size: 2em;
+	line-height: 1.7em;
+	text-align: center;
+	background: white;
+	border-radius: 50%;
+    -webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.bubbler-wrapper .bubbler-menu-loader {
+	color: white;
+	background: #FF4500;
+}
